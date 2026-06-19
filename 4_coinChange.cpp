@@ -42,7 +42,8 @@ int iterative(vector<int> coins, int n){
             ans = min(ans,dp[i-coins[j]]);
         }
 
-        dp[i] = ans;
+        if(ans == 1e9) dp[i] = 1e9;
+        else dp[i] = ans;
     }
 
     if(dp[n] == 1e9) return -1;

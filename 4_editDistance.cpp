@@ -30,13 +30,21 @@ int iterative(string &s1, string &s2){
     vector<vector<int>> dp(n+1,vector<int>(m+1));
 
     // base case:
+    // j hamara m ban chuka h
+    // to hum i ki saari values par iterate kar rahe
     for(int i=0; i<=n; i++) dp[i][m] = n - i;
+    
+    // i hamara n ban chuka h
+    // to hum j ki saari values par iterate kar rahe
     for(int j=0; j<=m; j++) dp[n][j] = m - j;
 
     for(int i=n-1; i>=0; i--){
         for(int j=m-1; j>=0; j--){
+            // elements equal h so no need for any operation
             if(s1[i] == s2[j]) dp[i][j] = dp[i+1][j+1];
             else{
+
+                // yaha ek operation krna padega
                 dp[i][j] = min(dp[i+1][j+1],min(dp[i+1][j],dp[i][j+1])) + 1;
             }
         }
